@@ -1,9 +1,8 @@
 package de.mustafa.demo.controller
 
 
-import de.mustafa.demo.entity.User
-import de.mustafa.demo.service.UserService
-import org.springframework.http.ResponseEntity
+import de.mustafa.demo.entity.Room
+import de.mustafa.demo.service.RoomService
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,15 +12,15 @@ import javax.validation.Valid
 
 
 @RestController
-class HtmlController(val userService: UserService){
+class HtmlController(val roomService: RoomService){
 
     @GetMapping("/")
     fun greet(model: Model) : String{
         return "Hi"
     }
 
-    @PostMapping("/user")
-    fun createUser(@Valid @RequestBody user: User):User{
-        return userService.createUser(user)
+    @PostMapping("/room")
+    fun createUser(@Valid @RequestBody room: Room):Room{
+        return roomService.createRoom(room)
     }
 }
