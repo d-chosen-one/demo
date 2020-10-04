@@ -16,4 +16,8 @@ class RoomService (val roomRepository: RoomRepository) {
     fun getRoom(id : Long) : Room{
         return roomRepository.getOne(id)
     }
+
+    fun getRooms(): List<Room> {
+        return roomRepository.findAll()
+    }
 }

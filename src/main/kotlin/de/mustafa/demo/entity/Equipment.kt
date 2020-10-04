@@ -15,7 +15,7 @@ data class Equipment (
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "typeId")
-        var type: Types? = null,
+        var type: Type? = null,
 
         var serialNumber: String=""
 )

@@ -1,6 +1,6 @@
 package de.mustafa.demo.controller
 
-import de.mustafa.demo.entity.Types
+import de.mustafa.demo.entity.Type
 import de.mustafa.demo.service.TypeService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -12,12 +12,12 @@ import javax.validation.Valid
 class TypeController(val typeService: TypeService){
 
     @GetMapping("/types")
-    fun getTypes():List<Types>{
+    fun getTypes():List<Type>{
         return typeService.getTypes()
     }
 
     @PostMapping("/types")
-    fun addType(@Valid @RequestBody type : Types) : Types{
+    fun addType(@Valid @RequestBody type : Type) : Type{
         return typeService.addType(type)
     }
 }

@@ -11,14 +11,19 @@ import javax.validation.Valid
 @RestController
 class HtmlController(val roomService: RoomService){
 
-    @GetMapping("/room/{id}")
-    fun greet(@PathVariable(value = "id") roomId: Long) : Room{
+    @GetMapping("/rooms/{id}")
+    fun getRoom(@PathVariable(value = "id") roomId: Long) : Room{
         return roomService.getRoom(roomId)
+    }
+
+    @GetMapping("/rooms")
+    fun getRooms():List<Room>{
+        return roomService.getRooms()
     }
 
 
     @PostMapping("/room")
-    fun createUser(@Valid @RequestBody room: Room):Room{
+    fun createRoom(@Valid @RequestBody room: Room):Room{
         return roomService.createRoom(room)
     }
 }
