@@ -1,47 +1,51 @@
 package de.mustafa.demo.service
 
+
 import de.mustafa.demo.entity.Room
 import de.mustafa.demo.repository.RoomRepository
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import org.junit.Assert
 import org.junit.Before
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers.any
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
-import org.mockito.junit.jupiter.MockitoExtension
 
 
-@ExtendWith(MockitoExtension::class)
+@ExtendWith(MockKExtension::class)
 internal class RoomServiceTest {
 
-    @Mock
+    @MockK
     lateinit var roomRepository: RoomRepository
+
+    @InjectMockKs
+    lateinit var roomService: RoomService
 
     private var expectedRoom : Room = Room(1,"test")
     private var expectedRooms : List<Room> = mutableListOf(Room(1,"test"), Room(2,"test"))
 
     @Before
-    fun setUp(){
-        MockitoAnnotations.initMocks(this)
-
+    fun setUp() {
+        MockKAnnotations.init(this)
     }
+
     @Test
     fun createRoom() {
-        Mockito.`when`(roomRepository.save(any(Room::class.java))).thenReturn(expectedRoom)
-        Assert.assertEquals(expectedRoom,roomRepository.save(Room(1,"test")))
+        every { roomRepository.save(Room(null,"test")) }returns expectedRoom
+        Assert.assertEquals(expectedRoom,roomService.createRoom(Room(null,"test")))
     }
 
     @Test
     fun getRoom() {
-        Mockito.`when`(roomRepository.getOne(any(Long::class.java))).thenReturn(expectedRoom)
-        Assert.assertEquals(expectedRoom,roomRepository.getOne(1L))
+        every { roomRepository.getOne(any()) } returns expectedRoom
+        Assert.assertEquals(expectedRoom,roomService.getRoom(1L))
     }
 
     @Test
     fun getRooms() {
-        Mockito.`when`(roomRepository.findAll()).thenReturn(expectedRooms)
-        Assert.assertEquals(2, roomRepository.findAll().size)
+        every {roomRepository.findAll()}returns(expectedRooms)
+        Assert.assertEquals(2, roomService.getRooms().size)
     }
 }

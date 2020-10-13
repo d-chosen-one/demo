@@ -13,4 +13,8 @@ class TypeService(val typeRepository: TypeRepository) {
     fun getTypes(): List<Type> {
         return typeRepository.findAll()
     }
+
+    fun getType(id:Long) : Type{
+        return typeRepository.getOne(id)
+    }
 }

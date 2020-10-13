@@ -13,4 +13,8 @@ class EquipmentService(val equipmentRepository: EquipmentRepository) {
     fun getEquipments() : List<Equipment>{
         return equipmentRepository.findAll()
     }
+
+    fun getEquipment(id: Long) : Equipment{
+        return equipmentRepository.getOne(id)
+    }
 }

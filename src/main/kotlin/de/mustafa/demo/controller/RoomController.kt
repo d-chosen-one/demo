@@ -9,7 +9,7 @@ import javax.validation.Valid
 
 
 @RestController
-class HtmlController(val roomService: RoomService){
+class RoomController(val roomService: RoomService){
 
     @GetMapping("/rooms/{id}")
     fun getRoom(@PathVariable(value = "id") roomId: Long) : Room{
@@ -22,7 +22,7 @@ class HtmlController(val roomService: RoomService){
     }
 
 
-    @PostMapping("/room")
+    @PostMapping("/rooms")
     fun createRoom(@Valid @RequestBody room: Room):Room{
         return roomService.createRoom(room)
     }
