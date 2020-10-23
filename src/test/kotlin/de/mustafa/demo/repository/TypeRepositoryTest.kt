@@ -32,4 +32,13 @@ internal class TypeRepositoryTest @Autowired constructor(
         typeRepository.save(secondType)
         assertThat(typeRepository.findAll().size).isEqualTo(2)
     }
+
+    @Test
+    fun `When delete`(){
+        val type = Type(null,"test")
+        entityManager.persist(type)
+        entityManager.flush()
+        type.id?.let { typeRepository.deleteById(it) }
+        assertThat(typeRepository.findAll().size).isEqualTo(0)
+    }
 }

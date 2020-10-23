@@ -17,4 +17,8 @@ class TypeService(val typeRepository: TypeRepository) {
     fun getType(id:Long) : Type{
         return typeRepository.getOne(id)
     }
+
+    fun deleteType(typeId: Long) {
+        typeRepository.deleteById(typeId)
+    }
 }

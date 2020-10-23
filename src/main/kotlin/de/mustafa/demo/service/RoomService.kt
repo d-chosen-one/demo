@@ -1,6 +1,5 @@
 package de.mustafa.demo.service
 
-import de.mustafa.demo.entity.Equipment
 import de.mustafa.demo.entity.Room
 import de.mustafa.demo.repository.RoomRepository
 import org.springframework.stereotype.Service

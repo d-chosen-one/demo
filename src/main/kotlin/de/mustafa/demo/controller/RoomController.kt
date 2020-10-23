@@ -3,11 +3,10 @@ package de.mustafa.demo.controller
 
 import de.mustafa.demo.entity.Room
 import de.mustafa.demo.service.RoomService
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
-
+@CrossOrigin
 @RestController
 class RoomController(val roomService: RoomService){
 

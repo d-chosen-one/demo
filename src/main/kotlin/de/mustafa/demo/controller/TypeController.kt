@@ -5,6 +5,7 @@ import de.mustafa.demo.service.TypeService
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
+@CrossOrigin
 @RestController
 class TypeController(val typeService: TypeService){
 
@@ -21,5 +22,10 @@ class TypeController(val typeService: TypeService){
     @PostMapping("/types")
     fun addType(@Valid @RequestBody type : Type) : Type{
         return typeService.addType(type)
+    }
+
+    @DeleteMapping("/types/{id}")
+    fun deleteType(@PathVariable(value ="id") typeId:Long){
+        typeService.deleteType(typeId)
     }
 }

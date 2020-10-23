@@ -5,6 +5,7 @@ import de.mustafa.demo.service.EquipmentService
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
+@CrossOrigin
 @RestController
 class EquipmentController(val equipmentService: EquipmentService) {
 

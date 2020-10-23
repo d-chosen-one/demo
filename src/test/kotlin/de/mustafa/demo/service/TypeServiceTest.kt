@@ -49,4 +49,6 @@ internal class TypeServiceTest {
         every{typeRepository.getOne(any())}returns type
         assertEquals(type, typeService.getType(1L))
     }
+
+
 }
